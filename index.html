@@ -6,7 +6,7 @@
 
 <title>กฎระเบียบเซิร์ฟเวอร์</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -18,7 +18,7 @@
 }
 
 body{
-    background:linear-gradient(135deg,#020617,#0f172a,#111827);
+    background:#f1f5f9;
     overflow:hidden;
 }
 
@@ -27,122 +27,180 @@ body{
 .home{
     width:100%;
     height:100vh;
+    background:
+    linear-gradient(135deg,#38bdf8,#60a5fa,#818cf8);
     display:flex;
     justify-content:center;
     align-items:center;
     flex-direction:column;
     text-align:center;
-    color:white;
+    padding:20px;
     position:relative;
+    overflow:hidden;
 }
 
-.glow{
+.circle1{
     position:absolute;
-    width:500px;
-    height:500px;
-    background:#38bdf8;
-    filter:blur(180px);
-    opacity:0.2;
+    width:300px;
+    height:300px;
+    background:rgba(255,255,255,0.2);
     border-radius:50%;
+    top:-80px;
+    right:-80px;
+}
+
+.circle2{
+    position:absolute;
+    width:250px;
+    height:250px;
+    background:rgba(255,255,255,0.15);
+    border-radius:50%;
+    bottom:-70px;
+    left:-70px;
+}
+
+.logo{
+    width:130px;
+    height:130px;
+    border-radius:35px;
+    background:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:60px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+    z-index:2;
 }
 
 .home h1{
-    font-size:70px;
+    margin-top:25px;
+    color:white;
+    font-size:42px;
+    font-weight:700;
     z-index:2;
-    text-shadow:0 0 20px #38bdf8;
 }
 
 .home p{
-    margin-top:10px;
-    color:#cbd5e1;
-    font-size:20px;
+    margin-top:12px;
+    color:#eff6ff;
+    font-size:18px;
     z-index:2;
+    line-height:1.6;
 }
 
 .enter-btn{
     margin-top:35px;
-    padding:18px 45px;
+    width:100%;
+    max-width:330px;
+    padding:18px;
     border:none;
     border-radius:18px;
-    background:linear-gradient(90deg,#0ea5e9,#38bdf8);
-    color:white;
-    font-size:22px;
+    background:white;
+    color:#2563eb;
+    font-size:20px;
     font-weight:700;
     cursor:pointer;
     transition:0.3s;
-    box-shadow:0 0 25px rgba(56,189,248,0.5);
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
     z-index:2;
 }
 
-.enter-btn:hover{
-    transform:scale(1.08);
-    box-shadow:0 0 40px rgba(56,189,248,0.8);
+.enter-btn:active{
+    transform:scale(0.96);
 }
 
 /* หน้ากฎ */
 
 .rules-page{
-    position:absolute;
+    position:fixed;
     top:0;
     left:100%;
     width:100%;
     height:100vh;
-    background:#0f172a;
+    background:#f8fafc;
+    transition:0.5s;
     overflow-y:auto;
-    padding:40px;
-    transition:1s;
 }
 
 .rules-page.active{
     left:0;
 }
 
-.rules-title{
-    text-align:center;
-    color:white;
-    margin-bottom:40px;
+.topbar{
+    position:sticky;
+    top:0;
+    background:white;
+    padding:18px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    box-shadow:0 2px 15px rgba(0,0,0,0.08);
+    z-index:999;
 }
 
-.rules-title h1{
-    font-size:50px;
-    color:#38bdf8;
+.back-btn{
+    width:45px;
+    height:45px;
+    border:none;
+    border-radius:14px;
+    background:#e0f2fe;
+    color:#0284c7;
+    font-size:22px;
+    cursor:pointer;
 }
 
-.rules-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:25px;
+.topbar h2{
+    color:#0f172a;
+    font-size:24px;
 }
+
+.rules-container{
+    padding:18px;
+}
+
+/* การ์ดกฎ */
 
 .rule-card{
-    background:rgba(30,41,59,0.8);
-    backdrop-filter:blur(10px);
-    border:1px solid rgba(255,255,255,0.1);
-    border-radius:25px;
-    padding:25px;
-    color:white;
+    background:white;
+    border-radius:24px;
+    padding:22px;
+    margin-bottom:20px;
+    box-shadow:0 5px 18px rgba(0,0,0,0.06);
     transition:0.3s;
-    position:relative;
-    overflow:hidden;
 }
 
-.rule-card:hover{
-    transform:translateY(-8px);
-    border-color:#38bdf8;
-    box-shadow:0 0 30px rgba(56,189,248,0.3);
+.rule-card:active{
+    transform:scale(0.98);
 }
 
-.rule-number{
-    font-size:24px;
-    color:#38bdf8;
-    font-weight:700;
+.rule-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
     margin-bottom:15px;
 }
 
-.rule-text{
+.rule-number{
+    background:#dbeafe;
+    color:#2563eb;
+    padding:8px 16px;
+    border-radius:12px;
+    font-weight:700;
     font-size:18px;
-    line-height:1.6;
-    margin-bottom:20px;
+}
+
+.rule-title{
+    color:#0f172a;
+    font-size:20px;
+    font-weight:700;
+    margin-bottom:12px;
+}
+
+.rule-detail{
+    color:#475569;
+    line-height:1.7;
+    font-size:16px;
+    margin-bottom:18px;
 }
 
 .punishment{
@@ -154,34 +212,18 @@ body{
 }
 
 .light{
-    background:#eab308;
-    color:black;
+    background:#fef3c7;
+    color:#92400e;
 }
 
 .medium{
-    background:#f97316;
+    background:#fed7aa;
+    color:#9a3412;
 }
 
 .heavy{
-    background:#ef4444;
-}
-
-.back-btn{
-    position:fixed;
-    top:20px;
-    left:20px;
-    padding:12px 25px;
-    border:none;
-    border-radius:14px;
-    background:#1e293b;
-    color:white;
-    cursor:pointer;
-    font-size:16px;
-    transition:0.3s;
-}
-
-.back-btn:hover{
-    background:#38bdf8;
+    background:#fecaca;
+    color:#991b1b;
 }
 
 </style>
@@ -191,13 +233,21 @@ body{
 
 <!-- หน้าแรก -->
 
-<div class="home" id="home">
+<div class="home">
 
-    <div class="glow"></div>
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+
+    <div class="logo">
+        ⚖️
+    </div>
 
     <h1>SERVER RULES</h1>
 
-    <p>กฎระเบียบและบทลงโทษภายในแมพ</p>
+    <p>
+        ระบบกฎระเบียบและบทลงโทษภายในเซิร์ฟเวอร์<br>
+        กรุณาศึกษาก่อนเข้าเล่น
+    </p>
 
     <button class="enter-btn" onclick="openRules()">
         ดูกฎระเบียบในแมพ
@@ -209,15 +259,17 @@ body{
 
 <div class="rules-page" id="rulesPage">
 
-    <button class="back-btn" onclick="backHome()">
-        ← กลับ
-    </button>
+    <div class="topbar">
 
-    <div class="rules-title">
-        <h1>กฎระเบียบเซิร์ฟเวอร์</h1>
+        <button class="back-btn" onclick="closeRules()">
+            ←
+        </button>
+
+        <h2>กฎระเบียบเซิร์ฟเวอร์</h2>
+
     </div>
 
-    <div class="rules-grid" id="rulesContainer"></div>
+    <div class="rules-container" id="rulesContainer"></div>
 
 </div>
 
@@ -225,36 +277,65 @@ body{
 
 const rules = [
 
-{ text:"ห้ามใช้คำหยาบรุนแรงใส่ผู้อื่น", level:"เบา"},
-{ text:"ห้ามสแปมข้อความในแชท", level:"เบา"},
-{ text:"ห้ามเปิดไมค์ก่อกวน", level:"เบา"},
-{ text:"ห้ามแต่งชุดผิดหน่วย", level:"เบา"},
-{ text:"ห้ามขับรถชนเล่น", level:"เบา"},
-{ text:"ห้ามใช้อาวุธใน Safe Zone", level:"กลาง"},
-{ text:"ห้ามยิงมั่ว", level:"กลาง"},
-{ text:"ห้ามแอบอ้างยศ", level:"กลาง"},
-{ text:"ห้ามก่อกวนการฝึก", level:"กลาง"},
-{ text:"ห้ามฝ่าฝืนคำสั่งครูฝึก", level:"กลาง"},
-{ text:"ห้ามใช้บัคในเกม", level:"หนัก"},
-{ text:"ห้ามใช้โปรแกรมโกง", level:"หนัก"},
-{ text:"ห้ามปลอมเป็นแอดมิน", level:"หนัก"},
-{ text:"ห้ามซื้อขายยศ", level:"หนัก"},
-{ text:"ห้ามเหยียดผู้อื่น", level:"หนัก"},
-{ text:"ห้ามยิงทีมเดียวกัน", level:"กลาง"},
-{ text:"ห้ามขโมยรถหน่วยงาน", level:"กลาง"},
-{ text:"ห้ามเข้าเขตหวงห้าม", level:"เบา"},
-{ text:"ห้าม AFK ระหว่างฝึก", level:"เบา"},
-{ text:"ห้ามใช้ชื่อไม่เหมาะสม", level:"กลาง"},
-{ text:"ห้ามแจกข้อมูลส่วนตัว", level:"หนัก"},
-{ text:"ห้ามหลอกลวงผู้เล่น", level:"หนัก"},
-{ text:"ห้ามใช้ช่องโหว่หนีโทษ", level:"หนัก"},
-{ text:"ห้ามทำลายบรรยากาศ RP", level:"กลาง"},
-{ text:"ห้ามพูดไม่สุภาพต่อผู้บังคับบัญชา", level:"เบา"},
-{ text:"ห้ามเข้ากิจกรรมโดยไม่ได้รับอนุญาต", level:"เบา"},
-{ text:"ห้ามป่วนระบบเซิร์ฟเวอร์", level:"หนัก"},
-{ text:"ห้ามใช้สคริปต์ช่วยเล่น", level:"หนัก"},
-{ text:"ห้ามก่อกวนทีมงาน", level:"กลาง"},
-{ text:"คำตัดสินทีมงานถือเป็นสิ้นสุด", level:"กลาง"}
+{
+title:"ห้ามใช้คำหยาบรุนแรง",
+detail:"ห้ามด่าทอ เหยียด หรือใช้ถ้อยคำไม่เหมาะสมใส่ผู้เล่นคนอื่น รวมถึงการก่อกวนผ่านแชทหรือไมค์",
+level:"เบา"
+},
+
+{
+title:"ห้ามสแปมข้อความ",
+detail:"ห้ามส่งข้อความซ้ำหลายครั้ง หรือใช้คำสั่งถี่เกินไปจนรบกวนผู้เล่นคนอื่น",
+level:"เบา"
+},
+
+{
+title:"ห้ามใช้อาวุธใน Safe Zone",
+detail:"พื้นที่ปลอดภัยห้ามใช้อาวุธ ยิง หรือก่อเหตุรุนแรงทุกกรณี",
+level:"กลาง"
+},
+
+{
+title:"ห้ามยิงมั่ว",
+detail:"การยิงผู้เล่นโดยไม่มีเหตุ RP หรือไม่มีเหตุผลถือว่าผิดกฎ",
+level:"กลาง"
+},
+
+{
+title:"ห้ามใช้โปรแกรมโกง",
+detail:"ห้ามใช้ Hack Script Executor หรือโปรแกรมช่วยเล่นทุกชนิด",
+level:"หนัก"
+},
+
+{
+title:"ห้ามแอบอ้างทีมงาน",
+detail:"ห้ามปลอมตัวเป็นแอดมิน ครูฝึก หรือทีมงานเซิร์ฟเวอร์",
+level:"หนัก"
+},
+
+{
+title:"ห้ามก่อกวนการฝึก",
+detail:"ห้ามเดินป่วน วิ่งตัดแถว เปิดเสียงดัง หรือทำให้การฝึกเสียหาย",
+level:"กลาง"
+},
+
+{
+title:"ห้าม AFK ระหว่างกิจกรรม",
+detail:"ผู้เล่นที่เข้าร่วมกิจกรรมหรือฝึกต้องอยู่หน้าจอตลอดเวลา",
+level:"เบา"
+},
+
+{
+title:"ห้ามแจกข้อมูลส่วนตัว",
+detail:"ห้ามเผยแพร่ข้อมูลส่วนตัวของผู้อื่นโดยไม่ได้รับอนุญาต",
+level:"หนัก"
+},
+
+{
+title:"คำตัดสินทีมงานถือเป็นสิ้นสุด",
+detail:"ผู้เล่นต้องเคารพคำตัดสินของทีมงานและห้ามเถียงอย่างรุนแรง",
+level:"กลาง"
+}
 
 ];
 
@@ -262,43 +343,51 @@ const container = document.getElementById("rulesContainer");
 
 rules.forEach((rule,index)=>{
 
-    let className = "";
-    let text = "";
+let className = "";
+let punishmentText = "";
 
-    if(rule.level === "เบา"){
-        className = "light";
-        text = "เตือน";
-    }
+if(rule.level === "เบา"){
+    className = "light";
+    punishmentText = "โทษ : เตือน";
+}
 
-    else if(rule.level === "กลาง"){
-        className = "medium";
-        text = "ปลด";
-    }
+else if(rule.level === "กลาง"){
+    className = "medium";
+    punishmentText = "โทษ : ปลด";
+}
 
-    else{
-        className = "heavy";
-        text = "แบน";
-    }
+else{
+    className = "heavy";
+    punishmentText = "โทษ : แบน";
+}
 
-    container.innerHTML += `
+container.innerHTML += `
 
-    <div class="rule-card">
+<div class="rule-card">
+
+    <div class="rule-header">
 
         <div class="rule-number">
             ข้อ ${index + 1}
         </div>
 
-        <div class="rule-text">
-            ${rule.text}
-        </div>
-
         <div class="punishment ${className}">
-            โทษ : ${text}
+            ${punishmentText}
         </div>
 
     </div>
 
-    `;
+    <div class="rule-title">
+        ${rule.title}
+    </div>
+
+    <div class="rule-detail">
+        ${rule.detail}
+    </div>
+
+</div>
+
+`;
 
 });
 
@@ -306,7 +395,7 @@ function openRules(){
     document.getElementById("rulesPage").classList.add("active");
 }
 
-function backHome(){
+function closeRules(){
     document.getElementById("rulesPage").classList.remove("active");
 }
 
