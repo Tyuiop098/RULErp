@@ -27,8 +27,7 @@ body{
 .home{
     width:100%;
     height:100vh;
-    background:
-    linear-gradient(135deg,#ffffff,#fff7ed);
+    background:linear-gradient(135deg,#ffffff,#fff7ed);
     display:flex;
     justify-content:center;
     align-items:center;
@@ -105,6 +104,7 @@ body{
     background:#fffdf8;
     transition:0.5s;
     overflow-y:auto;
+    z-index:9999;
 }
 
 .rules-page.active{
@@ -144,7 +144,7 @@ body{
     padding:18px;
 }
 
-/* การ์ด */
+/* การ์ดกฎ */
 
 .rule-card{
     background:white;
@@ -165,11 +165,12 @@ body{
     justify-content:space-between;
     align-items:center;
     margin-bottom:15px;
+    gap:10px;
 }
 
 .rule-number{
-    background:#facc15;
-    color:#78350f;
+    background:#dbeafe;
+    color:#2563eb;
     padding:8px 16px;
     border-radius:12px;
     font-weight:700;
@@ -178,7 +179,7 @@ body{
 
 .rule-title{
     color:#991b1b;
-    font-size:21px;
+    font-size:22px;
     font-weight:700;
     margin-bottom:12px;
 }
@@ -187,16 +188,14 @@ body{
     color:#444;
     font-size:16px;
     line-height:1.8;
-    margin-bottom:18px;
 }
-
-/* โทษ */
 
 .punishment{
     padding:10px 18px;
     border-radius:12px;
     font-weight:700;
     font-size:15px;
+    white-space:nowrap;
 }
 
 .light{
@@ -205,13 +204,35 @@ body{
 }
 
 .medium{
-    background:#fee2e2;
-    color:#991b1b;
+    background:#fed7aa;
+    color:#9a3412;
 }
 
 .heavy{
     background:#b91c1c;
     color:white;
+}
+
+.note-box{
+    background:white;
+    margin:20px;
+    padding:22px;
+    border-radius:24px;
+    border:2px solid #fef3c7;
+    box-shadow:0 5px 18px rgba(0,0,0,0.05);
+}
+
+.note-box h3{
+    color:#991b1b;
+    margin-bottom:15px;
+    font-size:22px;
+}
+
+.note-box ul{
+    padding-left:20px;
+    color:#444;
+    line-height:1.9;
+    font-size:16px;
 }
 
 </style>
@@ -258,6 +279,19 @@ body{
 
     <div class="rules-container" id="rulesContainer"></div>
 
+    <div class="note-box">
+
+        <h3>หมายเหตุเพิ่มเติม</h3>
+
+        <ul>
+            <li>หากกระทำผิดซ้ำหลายครั้ง ทีมงานสามารถเพิ่มระดับโทษได้</li>
+            <li>ทีมงานมีสิทธิ์ใช้ดุลยพินิจตามสถานการณ์</li>
+            <li>การเข้ามาเล่นในเซิร์ฟเวอร์ถือว่ายอมรับกฎทั้งหมดแล้ว</li>
+            <li>หากพบผู้กระทำผิด กรุณาแจ้งทีมงานพร้อมหลักฐาน</li>
+        </ul>
+
+    </div>
+
 </div>
 
 <script>
@@ -266,7 +300,7 @@ const rules = [
 
 {
 title:"ห้ามใช้คำหยาบรุนแรงใส่ผู้อื่น",
-detail:"ห้ามด่าทอ ดูถูก หรือใช้คำพูดไม่เหมาะสมใส่ผู้เล่นคนอื่น หากมีการกระทำซ้ำหลายครั้ง ทีมงานสามารถเพิ่มโทษได้",
+detail:"ห้ามด่าทอ ดูถูก หรือใช้คำพูดไม่เหมาะสมใส่ผู้เล่นคนอื่นทั้งผ่านแชทหรือไมโครโฟน",
 level:"เบา"
 },
 
@@ -278,31 +312,37 @@ level:"เบา"
 
 {
 title:"ห้ามเปิดไมค์ก่อกวน",
-detail:"ห้ามเปิดเพลง เสียงดัง หรือเสียงแตกผ่านไมโครโฟนจนรบกวนผู้อื่น",
+detail:"ห้ามเปิดเพลง เสียงดัง หรือเสียงไมค์แตกที่สร้างความรำคาญแก่ผู้อื่น",
 level:"เบา"
 },
 
 {
 title:"ห้ามแต่งชุดผิดหน่วยหรือผิดยศ",
-detail:"ผู้เล่นต้องแต่งกายให้ตรงกับยศ หน่วย หรือหน้าที่ของตนเอง",
+detail:"ผู้เล่นต้องแต่งกายให้ตรงกับหน่วยหรือยศของตนเอง",
 level:"เบา"
 },
 
 {
-title:"ห้ามใช้อาวุธใน Safe Zone",
-detail:"พื้นที่ปลอดภัยห้ามยิง ต่อสู้ หรือใช้อาวุธทุกชนิดโดยเด็ดขาด",
+title:"ห้ามขับรถชนผู้อื่นเล่นโดยไม่มีเหตุ RP",
+detail:"ห้ามขับรถชนผู้เล่นหรือก่อกวนโดยไม่มีเหตุการณ์ Roleplay รองรับ",
+level:"เบา"
+},
+
+{
+title:"ห้ามใช้อาวุธในพื้นที่ปลอดภัย",
+detail:"Safe Zone ห้ามยิง ต่อสู้ หรือใช้อาวุธทุกชนิด",
 level:"กลาง"
 },
 
 {
 title:"ห้ามยิงมั่วโดยไม่มีเหตุผล",
-detail:"ห้ามโจมตีผู้เล่นโดยไม่มีเหตุ RP หรือไม่มีสถานการณ์รองรับ",
+detail:"ห้ามยิงผู้เล่นโดยไม่มีเหตุ RP หรือไม่มีสาเหตุที่เหมาะสม",
 level:"กลาง"
 },
 
 {
 title:"ห้ามใช้โปรแกรมโกงหรือสคริปต์โกง",
-detail:"ห้ามใช้ Hack Executor หรือโปรแกรมช่วยเล่นทุกประเภท หากตรวจพบจะถูกลงโทษทันที",
+detail:"ห้ามใช้ Hack Executor หรือโปรแกรมช่วยเล่นทุกชนิด",
 level:"หนัก"
 },
 
@@ -313,14 +353,8 @@ level:"หนัก"
 },
 
 {
-title:"ห้ามก่อกวนการฝึก",
-detail:"ห้ามเดินตัดแถว เปิดเสียง หรือกระทำการที่ทำให้การฝึกเสียหาย",
-level:"กลาง"
-},
-
-{
 title:"คำตัดสินของทีมงานถือเป็นสิ้นสุด",
-detail:"ผู้เล่นทุกคนต้องเคารพการตัดสินของทีมงานตามหลักฐานและสถานการณ์",
+detail:"ผู้เล่นต้องเคารพคำตัดสินของทีมงานตามหลักฐานและสถานการณ์",
 level:"กลาง"
 }
 
@@ -378,12 +412,24 @@ container.innerHTML += `
 
 });
 
+/* เปิดหน้ากฎ */
+
 function openRules(){
+
+    document.querySelector(".home").style.display = "none";
+
     document.getElementById("rulesPage").classList.add("active");
+
 }
 
+/* กลับหน้าแรก */
+
 function closeRules(){
+
+    document.querySelector(".home").style.display = "flex";
+
     document.getElementById("rulesPage").classList.remove("active");
+
 }
 
 </script>
